@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sách Yêu Thích – AyaBook</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/yeuthich.css">
+</head>
+
+<body>
+    <div class="container-fluid px-4 px-lg-5" style="padding-top: 90px; min-height: calc(100vh - 70px);">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-wrap">
+            <a href="../index.html" class="breadcrumb-btn">
+                <i class="ti-home"></i>
+                <span class="bc-sep">›</span>
+                <span>Danh sách yêu thích</span>
+            </a>
+        </div>
+
+        <h1 class="section-title mb-4">Danh sách yêu thích</h1>
+
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4" id="favorites-container"></div>
+
+        <div id="empty-favorites" class="empty-state" style="display:none;">
+            <i class="ti-heart"></i>
+            <p>Bạn chưa có cuốn sách yêu thích nào.</p>
+            <a href="../index.html" class="btn-aya mt-3">
+                <i class="ti-home"></i> Tiếp tục mua sắm
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="aya-footer">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <div class="footer-copy">
+                    <p>&copy; 2026 <strong>AyaBook</strong>. All rights reserved.</p>
+                    <p class="footer-sub">Mua sách online dễ dàng &amp; chuyên nghiệp.</p>
+                </div>
+                <div class="footer-social text-center">
+                    <p>KẾT NỐI VỚI CHÚNG TÔI</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i
+                                class="ti-facebook"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i
+                                class="ti-youtube"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                                class="ti-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="aya-toast-container"></div>
+
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script>
+        function renderFavorites() {
+            var favs = JSON.parse(localStorage.getItem(window.getFavKey()) || '[]');
+            var $container = $('#favorites-container');
+            var $empty = $('#empty-favorites');
+
+            if (favs.length === 0) {
+                $container.hide();
+                $empty.show();
+                return;
+            }
+
+            $container.show();
+            $empty.hide();
+            $container.html(favs.map(function (book) {
+                return '<div class="col" id="fav-' + book.id + '">' +
+                    '<div class="book-item">' +
+                    '<a href="chitiet.html?id=' + book.id + '" class="book-link">' +
+                    '<img src="' + book.img + '" alt="' + book.title + '" class="book-cover">' +
+                    '</a>' +
+                    '<p class="book-name">' + book.title + '</p>' +
+                    '<p class="book-price">' + book.price + '</p>' +
+                    '<button class="btn-remove-fav" onclick="removeFav(\'' + book.id + '\')">' +
+                    '<i class="ti-trash"></i> Bỏ yêu thích</button>' +
+                    '</div></div>';
+            }).join(''));
+        }
+
+        function removeFav(id) {
+            var favs = JSON.parse(localStorage.getItem(window.getFavKey()) || '[]');
+            favs = favs.filter(function (f) { return f.id !== id; });
+            localStorage.setItem(window.getFavKey(), JSON.stringify(favs));
+            $('#fav-' + id).fadeOut(300, function () { $(this).remove(); renderFavorites(); });
+        }
+
+        $(document).ready(function () { renderFavorites(); });
+    </script>
+</body>
+
+</html>

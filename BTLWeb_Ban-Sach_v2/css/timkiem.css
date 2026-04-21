@@ -1,0 +1,20 @@
+/* ============================================================
+   AyaBook – timkiem.css (Trang tìm kiếm)
+   ============================================================ */
+
+.search-query-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--aya-primary-light);
+    border: 1px solid rgba(255,107,107,0.25);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--aya-primary);
+    margin-bottom: 20px;
+}
+
+.empty-state { text-align: center; padding: 80px 20px; color: var(--aya-muted); }
+.empty-state i { font-size: 56px; color: #E5E7EB; margin-bottom: 16px; display: block; }

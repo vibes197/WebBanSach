@@ -1,0 +1,32 @@
+/* ============================================================
+   AyaBook – yeuthich.css (Danh sách yêu thích)
+   ============================================================ */
+
+.btn-remove-fav {
+    margin-top: 8px;
+    background: #FEF2F2;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-remove-fav:hover { background: #FCA5A5; }
+
+.empty-state { text-align: center; padding: 80px 20px; }
+.empty-state > i { font-size: 60px; color: #E5E7EB; margin-bottom: 16px; display: block; }
+.empty-state p { font-size: 18px; color: var(--aya-muted); }
+
+/* Đồng bộ kích thước nút "Tiếp tục mua sắm" với trang giỏ hàng */
+.empty-state .btn-aya {
+    padding: 10px 24px;
+    font-size: 15px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.empty-state .btn-aya i { font-size: 15px; margin: 0; color: inherit; display: inline-block; }

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Hỏi đáp – AyaBook</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/faq.css">
+</head>
+
+<body>
+    <div class="container-fluid px-4 px-lg-5" style="padding-top: 80px; min-height: calc(100vh - 70px);">
+
+        <div class="breadcrumb-wrap">
+            <a href="../index.html" class="breadcrumb-btn">
+                <i class="ti-home"></i>
+                <span class="bc-sep">›</span>
+                <span>FAQ &amp; Hỏi đáp</span>
+            </a>
+        </div>
+
+        <div class="faq-header">
+            <h1>Câu Hỏi Thường Gặp (FAQ)</h1>
+            <p>Tìm câu trả lời hoặc gửi thắc mắc của bạn cho chúng tôi</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Accordion FAQ -->
+            <div class="col-12 col-lg-7">
+                <div class="accordion" id="faqAccordion">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq1">
+                                Làm thế nào để đặt hàng?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body" style="font-size:14px;color:var(--aya-gray);">
+                                Bạn chỉ cần chọn sách vào giỏ hàng, nhấn "Thanh toán", điền thông tin địa chỉ và xác
+                                nhận đơn hàng.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq2">
+                                Thời gian giao hàng là bao lâu?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body" style="font-size:14px;color:var(--aya-gray);">
+                                Đơn hàng nội thành Hà Nội sẽ được giao trong 1-2 ngày. Các tỉnh thành khác từ 3-5 ngày
+                                làm việc.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq3">
+                                Tôi có được kiểm tra hàng trước khi nhận không?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body" style="font-size:14px;color:var(--aya-gray);">
+                                AyaBook hỗ trợ khách hàng đồng kiểm trước khi thanh toán. Nếu sách bị lỗi, bạn hoàn toàn
+                                có thể từ chối nhận hàng.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq4">
+                                Phương thức thanh toán nào được chấp nhận?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body" style="font-size:14px;color:var(--aya-gray);">
+                                Chúng tôi chấp nhận thanh toán COD (nhận hàng trả tiền) và chuyển khoản trước qua ngân
+                                hàng/Momo.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq5">
+                                Chính sách đổi trả như thế nào?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body" style="font-size:14px;color:var(--aya-gray);">
+                                Chúng tôi hỗ trợ đổi trả miễn phí trong vòng 7 ngày kể từ ngày nhận hàng nếu sản phẩm bị
+                                lỗi in ấn hoặc thiếu trang.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form liên hệ -->
+            <div class="col-12 col-lg-5">
+                <div class="contact-card">
+                    <h3>Vẫn chưa tìm thấy câu trả lời?</h3>
+                    <p class="subtitle">Gửi câu hỏi trực tiếp cho đội ngũ tư vấn</p>
+                    <form id="faq-form">
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size:13px;font-weight:600;">Họ và tên</label>
+                            <input type="text" class="form-control" id="faq-name" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size:13px;font-weight:600;">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="faq-phone" placeholder="091 234 5678" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size:13px;font-weight:600;">Nội dung tư vấn</label>
+                            <textarea class="form-control" id="faq-content" rows="4"
+                                placeholder="Chi tiết bạn cần tư vấn..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="ti-location-arrow me-2"></i>Gửi Hỗ Trợ
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 60px;"></div>
+    </div>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="aya-footer">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <div class="footer-copy">
+                    <p>&copy; 2026 <strong>AyaBook</strong>. All rights reserved.</p>
+                    <p class="footer-sub">Mua sách online dễ dàng &amp; chuyên nghiệp.</p>
+                </div>
+                <div class="footer-social text-center">
+                    <p>KẾT NỐI VỚI CHÚNG TÔI</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i
+                                class="ti-facebook"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i
+                                class="ti-youtube"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                                class="ti-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="aya-toast-container"></div>
+
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script>
+        $('#faq-form').on('submit', function (e) {
+            e.preventDefault();
+            ayaShowToast('✅ Gửi thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.', 'cart');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>

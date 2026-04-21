@@ -1,0 +1,17 @@
+/* ============================================================
+   AyaBook – chude.css (Sách theo chủ đề)
+   ============================================================ */
+
+.category-badge {
+    display: inline-block;
+    background: var(--aya-primary);
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.empty-state { text-align: center; padding: 80px 20px; color: var(--aya-muted); }
+.empty-state i { font-size: 56px; color: #E5E7EB; margin-bottom: 16px; display: block; }

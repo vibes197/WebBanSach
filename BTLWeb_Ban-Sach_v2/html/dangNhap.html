@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Đăng nhập vào AyaBook để khám phá hàng ngàn đầu sách hấp dẫn.">
+    <title>Đăng nhập – AyaBook</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="auth-page-body">
+
+    <main class="auth-page">
+        <div class="auth-card">
+
+            <!-- Header -->
+            <div class="auth-header">
+                <a href="../index.html" class="auth-logo">AyaBook</a>
+                <h1>Chào mừng trở lại!</h1>
+                <p>Đăng nhập để khám phá thế giới sách của bạn</p>
+            </div>
+
+            <!-- Body -->
+            <div class="auth-body">
+
+                <!-- Error -->
+                <div class="auth-alert auth-alert-error" id="loginError" role="alert">
+                    <i class="ti-alert"></i>
+                    <span id="loginErrorMsg">Sai tài khoản hoặc mật khẩu!</span>
+                </div>
+                <!-- Success -->
+                <div class="auth-alert auth-alert-success" id="loginSuccess" role="status">
+                    <i class="ti-check"></i>
+                    <span>Đăng nhập thành công! Đang chuyển hướng…</span>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Địa chỉ email</label>
+                    <input type="email" class="form-control" id="email" placeholder="example@email.com"
+                        autocomplete="email" required>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-2">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu"
+                            autocomplete="current-password" required>
+                        <button class="btn" type="button" onclick="togglePasswordVisibility('password', this)"
+                            aria-label="Hiện/ẩn mật khẩu">
+                            <i class="ti-lock" id="togglePasswordIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <a href="#" class="forgot-link">Quên mật khẩu?</a>
+
+                <button type="button" class="btn-auth" id="loginSubmitBtn" onclick="doLogin()">
+                    <i class="ti-shift-right"></i> Đăng nhập
+                </button>
+            </div>
+
+            <!-- Footer -->
+            <div class="auth-footer">
+                <p>Chưa có tài khoản? <a href="dangKi.html" class="auth-link">Đăng ký ngay</a></p>
+                <a href="../index.html" class="back-home">
+                    <i class="ti-arrow-left"></i> Về trang chủ
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- jQuery -->
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+    <script>
+        function doLogin() {
+            var email = $('#email').val().trim();
+            var pass = $('#password').val();
+            var $err = $('#loginError');
+            var $errMsg = $('#loginErrorMsg');
+            var $ok = $('#loginSuccess');
+            var $btn = $('#loginSubmitBtn');
+
+            $err.hide(); $ok.hide();
+
+            if (!email || !pass) {
+                $errMsg.text('Vui lòng nhập đầy đủ thông tin!');
+                $err.fadeIn(); return;
+            }
+            var emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailReg.test(email)) {
+                $errMsg.text('Vui lòng nhập địa chỉ email hợp lệ!');
+                $err.fadeIn(); return;
+            }
+            var savedEmail = localStorage.getItem('email');
+            var savedPass = localStorage.getItem('password');
+
+            if (email === savedEmail && pass === savedPass) {
+                localStorage.setItem('loggedIn', 'true');
+                $ok.fadeIn();
+                $btn.html('<i class="ti-check"></i> Thành công!').addClass('btn-success-state');
+                setTimeout(function () { window.location.href = '../index.html'; }, 900);
+            } else {
+                $errMsg.text('Sai tài khoản hoặc mật khẩu!');
+                $err.fadeIn();
+                $('.auth-card').addClass('shake');
+                setTimeout(function () { $('.auth-card').removeClass('shake'); }, 600);
+            }
+        }
+
+        function togglePasswordVisibility(inputId, btn) {
+            var $input = $('#' + inputId);
+            var $icon = $(btn).find('i');
+            if ($input.attr('type') === 'password') {
+                $input.attr('type', 'text');
+                $icon.removeClass('ti-lock').addClass('ti-unlock');
+            } else {
+                $input.attr('type', 'password');
+                $icon.removeClass('ti-unlock').addClass('ti-lock');
+            }
+        }
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Enter') doLogin();
+        });
+
+        // Điền sẵn thông tin nếu mới đăng ký và chưa đăng nhập
+        $(document).ready(function() {
+            if (localStorage.getItem('loggedIn') !== 'true') {
+                var savedEmail = localStorage.getItem('email');
+                var savedPass = localStorage.getItem('password');
+                if (savedEmail) $('#email').val(savedEmail);
+                if (savedPass) $('#password').val(savedPass);
+            }
+        });
+    </script>
+</body>
+
+</html>

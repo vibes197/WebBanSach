@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Hàng Thành Công – AyaBook</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/thanhcong.css">
+</head>
+
+<body>
+    <div class="success-page" style="padding-top:70px;">
+        <div class="success-card">
+            <div class="success-icon"><i class="ti-check"></i></div>
+            <h1>Đặt hàng thành công!</h1>
+            <p>Cảm ơn bạn đã tin tưởng mua sắm tại <strong style="color:var(--aya-primary)">AyaBook</strong>.<br>Đơn
+                hàng của bạn đang được xử lý.</p>
+            <div class="order-id" id="order-id">#AYA2026001</div>
+            <p class="mt-2" style="font-size:14px;">Chúng tôi sẽ giao hàng trong <strong>2–4 ngày làm
+                    việc</strong>.<br>Cảm ơn bạn đã ủng hộ AyaBook! 📚</p>
+            <div class="d-flex gap-3 justify-content-center mt-4 flex-wrap">
+                <a href="../index.html" class="btn-aya"><i class="ti-home"></i> Về trang chủ</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="aya-footer">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <div class="footer-copy">
+                    <p>&copy; 2026 <strong>AyaBook</strong>. All rights reserved.</p>
+                    <p class="footer-sub">Mua sách online dễ dàng &amp; chuyên nghiệp.</p>
+                </div>
+                <div class="footer-social text-center">
+                    <p>KẾT NỐI VỚI CHÚNG TÔI</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i
+                                class="ti-facebook"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i
+                                class="ti-youtube"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                                class="ti-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="aya-toast-container"></div>
+
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script>
+        // Generate random order ID
+        var orderId = '#AYA' + new Date().getFullYear() + Math.floor(Math.random() * 90000 + 10000);
+        $('#order-id').text(orderId);
+    </script>
+</body>
+
+</html>

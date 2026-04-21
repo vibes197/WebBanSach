@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Kiếm – AyaBook</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/timkiem.css">
+</head>
+
+<body>
+    <div class="container-fluid px-4 px-lg-5" style="padding-top: 90px; min-height: calc(100vh - 70px);">
+
+        <div class="breadcrumb-wrap">
+            <a href="../index.html" class="breadcrumb-btn">
+                <i class="ti-home"></i>
+                <span class="bc-sep">›</span>
+                <span>Tìm kiếm</span>
+            </a>
+        </div>
+
+        <div class="text-center mb-4">
+            <h1 class="section-title">KẾT QUẢ TÌM KIẾM</h1>
+            <div class="search-query-display">
+                <i class="ti-search"></i>
+                <span id="search-query-text">"..."</span>
+            </div>
+            <p id="search-count" style="color:var(--aya-muted);font-size:14px;"></p>
+        </div>
+
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4" id="search-grid"></div>
+
+        <div id="empty-state" class="empty-state" style="display:none;">
+            <i class="ti-search"></i>
+            <p id="empty-msg">Không tìm thấy sách phù hợp.</p>
+            <a href="../index.html" class="btn-aya mt-3"><i class="ti-home"></i> Về trang chủ</a>
+        </div>
+
+        <div style="height: 60px;"></div>
+    </div>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="aya-footer">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <div class="footer-copy">
+                    <p>&copy; 2026 <strong>AyaBook</strong>. All rights reserved.</p>
+                    <p class="footer-sub">Mua sách online dễ dàng &amp; chuyên nghiệp.</p>
+                </div>
+                <div class="footer-social text-center">
+                    <p>KẾT NỐI VỚI CHÚNG TÔI</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i
+                                class="ti-facebook"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i
+                                class="ti-youtube"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                                class="ti-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="aya-toast-container"></div>
+
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var q = new URLSearchParams(window.location.search).get('q') || '';
+            document.title = (q ? '"' + q + '"' : 'Tìm kiếm') + ' – AyaBook';
+
+            if (!q) {
+                $('#search-query-text').text('(chưa nhập từ khóa)');
+                $('#empty-msg').text('Vui lòng nhập từ khóa để tìm kiếm.');
+                $('#empty-state').show();
+                return;
+            }
+
+            $('#search-query-text').text('"' + q + '"');
+
+            var results = searchBooks(q);
+            $('#search-count').text('Tìm thấy ' + results.length + ' kết quả');
+
+            if (results.length === 0) {
+                $('#search-grid').hide();
+                $('#empty-state').show();
+                return;
+            }
+
+            $('#search-grid').html(results.map(function (book) {
+                return '<div class="col"><div class="book-item">' +
+                    '<a href="chitiet.html?id=' + book.id + '" class="book-link">' +
+                    '<img src="' + book.img + '" alt="' + book.name + '" class="book-cover">' +
+                    '</a>' +
+                    '<p class="book-name">' + book.name + '</p>' +
+                    '<p class="book-price">' + book.price + '</p>' +
+                    '</div></div>';
+            }).join(''));
+        });
+    </script>
+</body>
+
+</html>

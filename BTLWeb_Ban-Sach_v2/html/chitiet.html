@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sách – AyaBook</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/chitiet.css">
+</head>
+
+<body>
+
+    <div class="container-fluid px-4 px-lg-5" style="padding-top: 80px;">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-wrap">
+            <a href="../index.html" class="breadcrumb-btn">
+                <i class="ti-home"></i>
+                <span class="bc-sep">›</span>
+                <span id="bc-category">Sách</span>
+                <span class="bc-sep">›</span>
+                <span id="bc-title">Chi tiết sách</span>
+            </a>
+        </div>
+
+        <!-- Main layout -->
+        <div class="chitiet-outer">
+
+            <!-- Card trái -->
+            <div class="chitiet-card">
+                <div class="chitiet-main">
+
+                    <!-- Ảnh bìa -->
+                    <div class="chitiet-cover">
+                        <img id="detail-img" src="" alt="Bìa sách">
+                    </div>
+
+                    <!-- Thông tin -->
+                    <div class="chitiet-info">
+                        <div class="cat-badge" id="detail-category-badge">Sách</div>
+                        <h1 class="chitiet-title" id="detail-title">Đang tải...</h1>
+
+                        <div class="chitiet-tags" id="detail-tags"></div>
+
+                        <div id="detail-meta-row" class="mb-3"></div>
+
+                        <div class="chitiet-price-block">
+                            <span class="chitiet-price" id="detail-price">0đ</span>
+                            <span class="chitiet-original" id="detail-original"></span>
+                            <span class="discount-badge" id="detail-badge" style="display:none"></span>
+                        </div>
+
+                        <div class="chitiet-stats">
+                            <div class="stat-item">
+                                <div class="stat-label">Số trang</div>
+                                <div class="stat-value" id="stat-pages">—</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Đã bán</div>
+                                <div class="stat-value" id="stat-sold">—</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Đánh giá</div>
+                                <div class="stat-value" id="stat-rating">—</div>
+                            </div>
+                        </div>
+
+                        <div class="chitiet-actions">
+                            <button class="btn-buy" id="btn-buy" onclick="handleBuy()">ĐẶT HÀNG NGAY</button>
+                            <button class="btn-addcart" onclick="handleAddCart()">+ Giỏ hàng</button>
+                            <button class="btn-fav" id="btn-fav" onclick="handleToggleFav()">
+                                <i class="ti-heart"></i> Yêu thích
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tóm tắt -->
+                <div class="chitiet-desc">
+                    <h2>Tóm tắt</h2>
+                    <p id="detail-desc" style="font-size:14px; color:var(--aya-gray); line-height:1.7;">Đang tải...</p>
+                </div>
+
+                <!-- Đánh giá -->
+                <div class="chitiet-reviews">
+                    <div class="review-header">
+                        <h2>Đánh giá <span class="badge bg-secondary ms-2 fw-normal" id="review-count">3</span></h2>
+                    </div>
+                    <div id="review-list"></div>
+                </div>
+            </div>
+
+            <!-- Sidebar phải -->
+            <div class="chitiet-sidebar">
+                <div class="sidebar-block">
+                    <div class="sidebar-block-header">Thông tin xuất bản</div>
+                    <div class="sidebar-block-body">
+                        <div class="sidebar-label">Nhà xuất bản</div>
+                        <div class="sidebar-value" id="sidebar-publisher">—</div>
+                        <div class="sidebar-divider"></div>
+                        <div class="sidebar-label">Tác giả</div>
+                        <div class="sidebar-value" id="sidebar-author">—</div>
+                        <div class="sidebar-divider"></div>
+                        <div class="sidebar-label">Năm xuất bản</div>
+                        <div class="sidebar-value" id="sidebar-year">—</div>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <div class="sidebar-block-header">Chú thích thêm</div>
+                    <div class="sidebar-block-body">
+                        <p class="sidebar-note">Sách được bọc cẩn thận, giao hàng toàn quốc 2–4 ngày làm việc.</p>
+                        <div class="sidebar-divider"></div>
+                        <p class="sidebar-note" style="color:#3d8b5e; font-weight:600;">Miễn phí đổi trả 7 ngày nếu sản
+                            phẩm lỗi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sách cùng thể loại -->
+        <section class="mt-5 mb-5 related-books">
+            <h2 class="section-title">Sách cùng thể loại</h2>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4" id="related-grid"></div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="aya-footer">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <div class="footer-copy">
+                    <p>&copy; 2026 <strong>AyaBook</strong>. All rights reserved.</p>
+                    <p class="footer-sub">Mua sách online dễ dàng &amp; chuyên nghiệp.</p>
+                </div>
+                <div class="footer-social text-center">
+                    <p>KẾT NỐI VỚI CHÚNG TÔI</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i
+                                class="ti-facebook"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i
+                                class="ti-youtube"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                                class="ti-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="aya-toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script>
+        // Fix img paths for pages in html/ folder
+        booksData.forEach(function (b) { b.img = b.img.replace('../img/', '../img/'); });
+
+        var sampleReviews = [
+            { name: 'Trần Văn A', stars: 5, date: '01/04/2026', text: 'Sách rất hay, in ấn đẹp, giao hàng nhanh. Rất hài lòng với sản phẩm!' },
+            { name: 'Nguyễn Thị B', stars: 4, date: '28/03/2026', text: 'Nội dung tốt, bìa cứng chắc chắn. Sẽ ủng hộ thêm!' },
+            { name: 'Lê Minh C', stars: 5, date: '15/03/2026', text: 'Đúng như mô tả, còn tặng thêm bookmark xinh. Mua lần hai rồi vẫn mê!' }
+        ];
+
+        function getParam(k) { return new URLSearchParams(window.location.search).get(k); }
+        function renderStars(r) {
+            var s = '';
+            for (var i = 1; i <= 5; i++) s += (i <= Math.round(r)) ? '★' : '☆';
+            return s;
+        }
+        function avatarColor(name) {
+            var cols = ['linear-gradient(135deg,#3d8b5e,#5aab7a)', 'linear-gradient(135deg,#6366F1,#818CF8)', 'linear-gradient(135deg,#F59E0B,#FCD34D)', 'linear-gradient(135deg,#EF4444,#FCA5A5)', 'linear-gradient(135deg,#06B6D4,#67E8F9)'];
+            return cols[(name.charCodeAt(0) || 0) % cols.length];
+        }
+
+        function renderPage() {
+            var id = getParam('id') || 'akutami';
+            var book = getBookById(id);
+
+            document.title = book.title + ' – AyaBook';
+            $('#bc-category').text(book.categoryLabel);
+            $('#bc-title').text(book.title);
+            $('#detail-img').attr({ src: book.img, alt: book.title });
+            $('#detail-category-badge').text(book.categoryLabel);
+            $('#detail-title').text(book.title);
+
+            // Tags
+            var tags = [book.categoryLabel, book.author, 'Bìa mềm'];
+            $('#detail-tags').html(tags.map(function (t) { return '<span class="chitiet-tag">' + t + '</span>'; }).join(''));
+
+            // Meta
+            var meta = [
+                { label: 'Tác giả:', val: book.author },
+                { label: 'Nhà XB:', val: book.publisher },
+                { label: 'Năm:', val: book.publishDate }
+            ];
+            $('#detail-meta-row').html(meta.map(function (m) { return '<div class="meta-line"><strong>' + m.label + '</strong>' + m.val + '</div>'; }).join(''));
+
+            // Price
+            $('#detail-price').text(book.price);
+            if (book.originalPrice) {
+                $('#detail-original').text(book.originalPrice);
+                $('#detail-badge').text(book.discount).show();
+            }
+
+            // Stats
+            $('#stat-pages').text(book.pages);
+            $('#stat-sold').text(book.sold.toLocaleString('vi-VN'));
+            $('#stat-rating').text(renderStars(book.rating) + ' ' + book.rating);
+
+            // Desc
+            $('#detail-desc').text(book.desc);
+
+            // Sidebar
+            $('#sidebar-publisher').text(book.publisher);
+            $('#sidebar-author').text(book.author);
+            $('#sidebar-year').text(book.publishDate);
+
+            // Fav state
+            var favs = JSON.parse(localStorage.getItem(window.getFavKey()) || '[]');
+            var isFav = favs.some(function (f) { return f.id === id; });
+            if (isFav) { $('#btn-fav').addClass('active-fav').html('<i class="ti-heart"></i> Đã yêu thích'); }
+
+            // Related
+            var related = (book.cungTheLoai || []).map(function (rid) { return getBookById(rid); }).filter(function (b) { return b.id !== id; }).slice(0, 4);
+            $('#related-grid').html(related.map(function (b) {
+                return '<div class="col"><div class="book-item"><a class="book-link" href="chitiet.html?id=' + b.id + '"><img src="' + b.img + '" alt="' + b.title + '" class="book-cover"></a><p class="book-name">' + b.title + '</p><p class="book-price">' + b.price + '</p></div></div>';
+            }).join(''));
+
+            // Reviews
+            var allRevs = [...loadSavedComments(id), ...sampleReviews];
+            $('#review-count').text(allRevs.length);
+            $('#review-list').html(allRevs.map(function (rv) {
+                return '<div class="review-item"><div class="review-avatar" style="background:' + avatarColor(rv.name) + '">' + rv.name.charAt(0) + '</div><div class="flex-1"><div><span class="review-name">' + rv.name + '</span><span class="review-date">' + (rv.date || '') + '</span></div><div class="review-stars">' + renderStars(rv.stars) + '</div><div class="review-text">' + rv.text + '</div></div></div>';
+            }).join(''));
+        }
+
+        function loadSavedComments(id) {
+            return JSON.parse(localStorage.getItem('ayaComments_' + (id || getParam('id') || 'akutami')) || '[]');
+        }
+
+        function handleAddCart() {
+            if (!requireLogin()) return;
+            var id = getParam('id') || 'akutami';
+            var book = getBookById(id);
+            var cart = JSON.parse(localStorage.getItem(window.getCartKey()) || '[]');
+            var ex = cart.find(function (i) { return i.id === book.id; });
+            if (ex) { ex.qty = (ex.qty || 1) + 1; }
+            else { cart.push({ id: book.id, name: book.title, img: book.img, price: book.price, qty: 1 }); }
+            localStorage.setItem(window.getCartKey(), JSON.stringify(cart));
+            ayaShowToast('Đã thêm vào giỏ hàng!', 'cart');
+        }
+
+        function handleBuy() {
+            if (!requireLogin()) return;
+            handleAddCart();
+            window.location.href = 'donhang.html';
+        }
+
+        function handleToggleFav() {
+            if (!requireLogin()) return;
+            var id = getParam('id') || 'akutami';
+            var book = getBookById(id);
+            var favs = JSON.parse(localStorage.getItem(window.getFavKey()) || '[]');
+            var idx = favs.findIndex(function (f) { return f.id === id; });
+            if (idx !== -1) {
+                favs.splice(idx, 1);
+                $('#btn-fav').removeClass('active-fav').html('<i class="ti-heart"></i> Yêu thích');
+                ayaShowToast('Đã xóa khỏi danh sách Yêu thích', 'success');
+            } else {
+                favs.push({ id: book.id, title: book.title, img: book.img, price: book.price });
+                $('#btn-fav').addClass('active-fav').html('<i class="ti-heart"></i> Đã yêu thích');
+                ayaShowToast('❤️ Đã thêm vào danh sách Yêu thích', 'success');
+            }
+            localStorage.setItem(window.getFavKey(), JSON.stringify(favs));
+        }
+
+        $(document).ready(function () { renderPage(); });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+/* ============================================================
+   AyaBook – faq.css (FAQ & Hỏi đáp)
+   ============================================================ */
+
+/* FAQ Accordion overrides */
+.accordion-button:not(.collapsed) {
+    color: var(--aya-primary);
+    background: var(--aya-primary-light);
+    box-shadow: none;
+}
+.accordion-button:focus { box-shadow: none; }
+.accordion-button { font-weight: 600; font-size: 15px; }
+.accordion-item { border: 1px solid #E5E7EB; border-radius: 8px !important; margin-bottom: 10px; overflow: hidden; }
+.accordion-button::after { filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(316deg); }
+.accordion-button:not(.collapsed)::after { filter: invert(40%) sepia(90%) saturate(400%) hue-rotate(316deg); }
+
+.faq-header { text-align: center; padding: 40px 20px 30px; }
+.faq-header h1 { font-size: 28px; font-weight: 800; color: var(--aya-dark); }
+.faq-header p { color: var(--aya-muted); font-size: 15px; }
+
+.contact-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    padding: 28px;
+    height: fit-content;
+}
+.contact-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.contact-card p.subtitle { color: var(--aya-muted); font-size: 14px; margin-bottom: 20px; }
+.contact-card .form-control:focus { border-color: var(--aya-primary); box-shadow: 0 0 0 3px rgba(255,107,107,0.12); }
+.contact-card textarea { resize: none; }
+
+.btn-submit {
+    width: 100%;
+    padding: 11px;
+    background: var(--aya-primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-submit:hover { background: var(--aya-primary-dark); }

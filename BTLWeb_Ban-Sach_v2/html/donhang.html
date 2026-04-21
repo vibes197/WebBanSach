@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn Hàng – AyaBook</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/donhang.css">
+</head>
+
+<body>
+    <div class="container-fluid px-4 px-lg-5" style="padding-top: 90px; min-height: calc(100vh - 70px);">
+
+        <div class="breadcrumb-wrap">
+            <a href="../index.html" class="breadcrumb-btn">
+                <i class="ti-home"></i>
+                <span class="bc-sep">›</span>
+                <span>Đơn hàng</span>
+            </a>
+        </div>
+
+        <div class="row g-4">
+            <!-- Danh sách sản phẩm -->
+            <div class="col-12 col-lg-8">
+                <h1 class="section-title text-start mb-4" style="font-size:20px; letter-spacing:0;">GIỎ HÀNG CỦA BẠN
+                </h1>
+                <div id="item-list"></div>
+            </div>
+
+            <!-- Tóm tắt đơn hàng -->
+            <div class="col-12 col-lg-4">
+                <div class="order-summary">
+                    <h2
+                        style="font-size:15px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">
+                        Thông tin đơn hàng</h2>
+                    <div class="summary-row">
+                        <span>Tạm tính:</span>
+                        <span id="sum-subtotal" class="sum-val">0đ</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Giảm giá:</span>
+                        <span id="sum-discount" class="sum-val">0đ</span>
+                    </div>
+                    <hr>
+                    <div class="summary-row total">
+                        <span>Thành tiền:</span>
+                        <span id="sum-total" class="sum-val" style="color:#e53935;">0đ</span>
+                    </div>
+                    <button class="btn-checkout" onclick="if(requireLogin()) window.location.href='thanhtoan.html'">
+                        <i class="ti-credit-card"></i> Tiến hành thanh toán
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="aya-footer">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <div class="footer-copy">
+                    <p>&copy; 2026 <strong>AyaBook</strong>. All rights reserved.</p>
+                    <p class="footer-sub">Mua sách online dễ dàng &amp; chuyên nghiệp.</p>
+                </div>
+                <div class="footer-social text-center">
+                    <p>KẾT NỐI VỚI CHÚNG TÔI</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i
+                                class="ti-facebook"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube"><i
+                                class="ti-youtube"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i
+                                class="ti-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="aya-toast-container"></div>
+
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script>
+        function parsePrice(str) { return parseInt((str || '0').replace(/[^\d]/g, ''), 10) || 0; }
+        function formatPrice(n) { return n.toLocaleString('vi-VN') + 'đ'; }
+
+        var cartItems = JSON.parse(localStorage.getItem(window.getCartKey()) || '[]');
+
+        // Fix đường dẫn ảnh: img/xxx.png → ../img/xxx.png (do trang nằm trong html/)
+        function fixImgPath(src) {
+            if (!src) return '';
+            if (src.startsWith('img/')) return '../' + src;
+            return src;
+        }
+
+        function renderItems() {
+            var $list = $('#item-list');
+            if (cartItems.length === 0) {
+                $list.html('<div class="empty-msg"><i class="ti-shopping-cart-full" style="font-size:48px; color:#E5E7EB;"></i><p class="mt-3">Không có sản phẩm nào trong giỏ hàng.</p><a href="../index.html" class="btn-aya mt-3"><i class="ti-home"></i> Tiếp tục mua sắm</a></div>');
+                updateSummary(); return;
+            }
+            $list.html(cartItems.map(function (item, idx) {
+                return '<div class="order-item">' +
+                    '<img src="' + fixImgPath(item.img) + '" alt="' + item.name + '" class="item-img">' +
+                    '<div class="flex-1 w-100">' +
+                    '<div class="d-flex justify-content-between align-items-start">' +
+                    '<span class="item-name">' + item.name + '</span>' +
+                    '<button class="btn-delete" onclick="removeItem(' + idx + ')" title="Xóa"><i class="ti-trash"></i></button>' +
+                    '</div>' +
+                    '<div class="item-price mt-1">' + item.price + '</div>' +
+                    '<div class="qty-row">' +
+                    '<button class="qty-btn" onclick="changeQty(' + idx + ',-1)">−</button>' +
+                    '<span class="qty-val">' + (item.qty || 1) + '</span>' +
+                    '<button class="qty-btn" onclick="changeQty(' + idx + ',1)">+</button>' +
+                    '</div>' +
+                    '<div class="item-total mt-1">Thành tiền: <strong style="color:#e53935;">' + formatPrice(parsePrice(item.price) * (item.qty || 1)) + '</strong></div>' +
+                    '</div></div>';
+            }).join(''));
+            updateSummary();
+        }
+
+        function updateSummary() {
+            var subtotal = cartItems.reduce(function (s, i) { return s + parsePrice(i.price) * (i.qty || 1); }, 0);
+            var original = cartItems.reduce(function (s, i) { return s + parsePrice(i.originalPrice || i.price) * (i.qty || 1); }, 0);
+            var discount = original - subtotal;
+            $('#sum-subtotal').text(formatPrice(subtotal));
+            $('#sum-discount').text(discount > 0 ? formatPrice(discount) : '0đ');
+            $('#sum-total').text(formatPrice(subtotal));
+        }
+
+        function changeQty(idx, delta) {
+            cartItems[idx].qty = Math.max(1, (cartItems[idx].qty || 1) + delta);
+            localStorage.setItem(window.getCartKey(), JSON.stringify(cartItems));
+            renderItems();
+        }
+
+        function removeItem(idx) {
+            cartItems.splice(idx, 1);
+            localStorage.setItem(window.getCartKey(), JSON.stringify(cartItems));
+            renderItems();
+        }
+
+        renderItems();
+    </script>
+</body>
+
+</html>

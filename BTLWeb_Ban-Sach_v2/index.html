@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AyaBook – Mua sách online dễ dàng và chuyên nghiệp. Hàng ngàn đầu sách Manga, Tiểu thuyết, Sách kỹ năng.">
+    <title>AyaBook – Trang Chủ</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
+    <!-- AyaBook CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════ NAVBAR ═══════════════════════════ -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid px-4">
+
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">AyaBook</a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav Content -->
+            <div class="collapse navbar-collapse" id="navbarMain">
+
+                <!-- Nav Links -->
+                <ul class="navbar-nav me-auto ms-3 gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="html/faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="html/vechungtoi.html">Về chúng tôi</a>
+                    </li>
+                    <!-- Dropdown: Chủ đề -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Chủ đề
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="html/chude.html?c=tieuthuyet">Tiểu thuyết</a></li>
+                            <li><a class="dropdown-item" href="html/chude.html?c=manga">Manga</a></li>
+                            <li><a class="dropdown-item" href="html/chude.html?c=kynang">Sách kỹ năng</a></li>
+                            <li><a class="dropdown-item" href="html/chude.html?c=hoctap">Sách học tập</a></li>
+                            <li><a class="dropdown-item" href="html/chude.html?c=thieunhi">Sách thiếu nhi</a></li>
+                            <li><a class="dropdown-item" href="html/chude.html?c=trinhtham">Trinh thám</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Search Bar -->
+                <div class="navbar-search me-3">
+                    <input id="book-search-input" type="text" placeholder="Tìm kiếm sách, tác giả...">
+                    <button id="book-search-button" type="button" aria-label="Tìm kiếm">
+                        <i class="ti-search"></i>
+                    </button>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="d-flex align-items-center gap-1">
+                    <!-- Yêu thích -->
+                    <a href="html/yeuthich.html" class="header-icon-btn">
+                        <i class="ti-heart"></i>
+                        <span>Yêu thích</span>
+                    </a>
+                    <!-- Giỏ hàng -->
+                    <a href="html/donhang.html" class="header-icon-btn">
+                        <i class="ti-shopping-cart"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                    <!-- Đăng nhập -->
+                    <a id="loginBtn" href="html/dangNhap.html" class="header-icon-btn">
+                        <i class="ti-shift-right"></i>
+                        <span>Đăng nhập</span>
+                    </a>
+                    <!-- User Avatar (ẩn khi chưa đăng nhập) -->
+                    <div class="user-avatar-wrapper" style="display:none;" id="userAvatarBtn">
+                        <button class="header-icon-btn" type="button">
+                            <i class="ti-user"></i>
+                            <span>Tài khoản</span>
+                        </button>
+                        <div class="user-dropdown-menu" id="userDropdownMenu">
+                            <div id="userDropdownName">Tài khoản</div>
+                            <a href="#" class="d-flex align-items-center gap-2" id="logoutBtn">
+                                <i class="ti-shift-left"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════ HERO SLIDER ══════════════════════ -->
+    <div class="hero-slider"></div>
+
+    <!-- ═══════════════════════ CONTENT ══════════════════════════ -->
+    <div class="container-fluid px-4 px-lg-5 mt-5">
+
+        <!-- SÁCH MỚI -->
+        <section class="mb-5">
+            <h2 class="section-title">SÁCH MỚI</h2>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=nina">
+                            <img src="img/nina.png" alt="Nina ở thị trấn cao nguyên" class="book-cover">
+                        </a>
+                        <p class="book-name">Nina ở thị trấn cao nguyên - Tập 2</p>
+                        <p class="book-price">34,200đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=tet">
+                            <img src="img/tet.png" alt="Những ngày tết ta" class="book-cover">
+                        </a>
+                        <p class="book-name">Những ngày tết ta</p>
+                        <p class="book-price">81,000đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=worldtrigger">
+                            <img src="img/worldtrigger.png" alt="World Trigger" class="book-cover">
+                        </a>
+                        <p class="book-name">World Trigger - Tập 4</p>
+                        <p class="book-price">31,500đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=bantusach">
+                            <img src="img/bantusach.png" alt="Những người bạn từ trang sách" class="book-cover">
+                        </a>
+                        <p class="book-name">Những người bạn từ trang sách</p>
+                        <p class="book-price">85,500đ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÁN CHẠY NHẤT -->
+        <section class="mb-5">
+            <h2 class="section-title">BÁN CHẠY NHẤT</h2>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=shin">
+                            <img src="img/shin.png" alt="Shin cậu bé bút chì" class="book-cover">
+                        </a>
+                        <p class="book-name">Shin - Cậu bé bút chì - Tập 1</p>
+                        <p class="book-price">19,500đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=naruto">
+                            <img src="img/naruto.png" alt="Naruto" class="book-cover">
+                        </a>
+                        <p class="book-name">Naruto - Quyển 20</p>
+                        <p class="book-price">21,000đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=onepi">
+                            <img src="img/onepi.png" alt="One Piece" class="book-cover">
+                        </a>
+                        <p class="book-name">One Piece - Tập 101</p>
+                        <p class="book-price">25,000đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=akutami">
+                            <img src="img/akutami.png" alt="Chú thuật hồi chiến" class="book-cover">
+                        </a>
+                        <p class="book-name">Chú thuật hồi chiến - Tập 1</p>
+                        <p class="book-price">30,000đ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MANGA COLLECTION -->
+        <section class="mb-5">
+            <div class="section-banner manga-banner mb-4">
+                <h2>Manga Collection</h2>
+                <p>Bộ sưu tập dành cho fan mê truyện tranh</p>
+            </div>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=xebuyt">
+                            <img src="img/xebuyt.png" alt="Xe buýt đưa em đi" class="book-cover">
+                        </a>
+                        <p class="book-name">XE BUÝT ĐƯA EM ĐI</p>
+                        <p class="book-price">36,000đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=rantaro">
+                            <img src="img/rantaro.png" alt="Ninja Rontaro" class="book-cover">
+                        </a>
+                        <p class="book-name">Ninja Rontaro - Tập 19</p>
+                        <p class="book-price">36,000đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=drstone">
+                            <img src="img/drstone.png" alt="Doctor Stone" class="book-cover">
+                        </a>
+                        <p class="book-name">Doctor Stone - Tập 21</p>
+                        <p class="book-price">22,500đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=doraemondoiquan">
+                            <img src="img/doraemondoiquan.png" alt="Đội quân Doraemon" class="book-cover">
+                        </a>
+                        <p class="book-name">Đội quân Doraemon - Tập 4</p>
+                        <p class="book-price">19,800đ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SÁCH KỸ NĂNG -->
+        <section class="mb-5">
+            <div class="section-banner skills-banner mb-4">
+                <h2>Sách Kỹ Năng</h2>
+                <p>Trau dồi bản thân mỗi ngày</p>
+            </div>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=thiendinh">
+                            <img src="img/thiendinh.png" alt="Thiền định mỗi ngày" class="book-cover">
+                        </a>
+                        <p class="book-name">THIỀN ĐỊNH MỖI NGÀY</p>
+                        <p class="book-price">118,000đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=tute">
+                            <img src="img/tute.png" alt="Một năm sống tử tế" class="book-cover">
+                        </a>
+                        <p class="book-name">MỘT NĂM SỐNG TỬ TẾ</p>
+                        <p class="book-price">168,000đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=sohoc">
+                            <img src="img/sohoc.png" alt="Nhân số học" class="book-cover">
+                        </a>
+                        <p class="book-name">THAY ĐỔI CUỘC SỐNG VỚI NHÂN SỐ HỌC</p>
+                        <p class="book-price">181,040đ</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="book-item">
+                        <a class="book-link" href="html/chitiet.html?id=damnghi">
+                            <img src="img/damnghi.png" alt="Dám nghĩ lại" class="book-cover">
+                        </a>
+                        <p class="book-name">DÁM NGHĨ LẠI</p>
+                        <p class="book-price">117,600đ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- /container -->
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="aya-footer">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <div class="footer-copy">
+                    <p>&copy; 2026 <strong>AyaBook</strong>. All rights reserved.</p>
+                    <p class="footer-sub">Mua sách online dễ dàng &amp; chuyên nghiệp.</p>
+                </div>
+                <div class="footer-social text-center">
+                    <p>KẾT NỐI VỚI CHÚNG TÔI</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+                            <i class="ti-facebook"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+                            <i class="ti-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                            <i class="ti-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="aya-toast-container"></div>
+
+    <!-- jQuery -->
+    <script src="js/jquery-4.0.0.min.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- AyaBook JS -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
