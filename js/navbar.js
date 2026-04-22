@@ -10,16 +10,43 @@ $(document).ready(function () {
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid px-4">
             <a class="navbar-brand" href="../index.html">AyaBook</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            
+            <div class="d-flex align-items-center order-lg-last gap-2 gap-lg-1">
+                <div class="d-flex align-items-center gap-1 right-icons-group">
+                    <a href="yeuthich.html" class="header-icon-btn">
+                        <i class="ti-heart"></i><span class="d-none d-lg-inline">Yêu thích</span>
+                    </a>
+                    <a href="donhang.html" class="header-icon-btn">
+                        <i class="ti-shopping-cart"></i><span class="d-none d-lg-inline">Giỏ hàng</span>
+                    </a>
+                    <a id="loginBtn" href="dangNhap.html" class="header-icon-btn">
+                        <i class="ti-shift-right"></i><span class="d-none d-lg-inline">Đăng nhập</span>
+                    </a>
+                    <div class="user-avatar-wrapper" style="display:none;" id="userAvatarBtn">
+                        <button class="header-icon-btn" type="button">
+                            <i class="ti-user"></i><span class="d-none d-lg-inline">Tài khoản</span>
+                        </button>
+                        <div class="user-dropdown-menu" id="userDropdownMenu">
+                            <div id="userDropdownName">Tài khoản</div>
+                            <a href="#" class="d-flex align-items-center gap-2" id="logoutBtn">
+                                <i class="ti-shift-left"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="navbar-toggler ms-1 ms-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="background-image: none; display: flex; align-items: center; justify-content: center;"><i class="ti-menu"></i></span>
+                </button>
+            </div>
+
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav me-auto ms-3 gap-1">
+                <ul class="navbar-nav me-auto ms-lg-3 gap-1">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ & Hỏi đáp</a></li>
                     <li class="nav-item"><a class="nav-link" href="vechungtoi.html">Về chúng tôi</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Chủ đề</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button">Chủ đề</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="chude.html?c=tieuthuyet">Tiểu thuyết</a></li>
                             <li><a class="dropdown-item" href="chude.html?c=manga">Manga</a></li>
@@ -30,33 +57,11 @@ $(document).ready(function () {
                         </ul>
                     </li>
                 </ul>
-                <div class="navbar-search me-3">
-                    <input id="book-search-input" type="text" placeholder="Tìm kiếm sách, tác giả...">
+                <div class="navbar-search me-lg-3 my-2 my-lg-0">
+                    <input id="book-search-input" type="text" placeholder="Tìm kiếm sách...">
                     <button id="book-search-button" type="button" aria-label="Tìm kiếm">
                         <i class="ti-search"></i>
                     </button>
-                </div>
-                <div class="d-flex align-items-center gap-1">
-                    <a href="yeuthich.html" class="header-icon-btn">
-                        <i class="ti-heart"></i><span>Yêu thích</span>
-                    </a>
-                    <a href="donhang.html" class="header-icon-btn">
-                        <i class="ti-shopping-cart"></i><span>Giỏ hàng</span>
-                    </a>
-                    <a id="loginBtn" href="dangNhap.html" class="header-icon-btn">
-                        <i class="ti-shift-right"></i><span>Đăng nhập</span>
-                    </a>
-                    <div class="user-avatar-wrapper" style="display:none;" id="userAvatarBtn">
-                        <button class="header-icon-btn" type="button">
-                            <i class="ti-user"></i><span>Tài khoản</span>
-                        </button>
-                        <div class="user-dropdown-menu" id="userDropdownMenu">
-                            <div id="userDropdownName">Tài khoản</div>
-                            <a href="#" class="d-flex align-items-center gap-2" id="logoutBtn">
-                                <i class="ti-shift-left"></i> Đăng xuất
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -155,6 +160,17 @@ $(document).ready(function () {
         setTimeout(function () { $toast.removeClass('show'); setTimeout(function () { $toast.remove(); }, 400); }, 3000);
     };
     window.showToast = window.ayaShowToast;
+
+    // ─── Custom Dropdown Toggle for Mobile (No Popper.js) ─────
+    $(document).on('click', '.navbar-nav .dropdown-toggle', function (e) {
+        e.preventDefault();
+        if ($(window).width() < 992) {
+            e.stopPropagation();
+            var $parent = $(this).parent();
+            $parent.toggleClass('show');
+            $parent.find('.dropdown-menu').slideToggle(200);
+        }
+    });
 
 });
 

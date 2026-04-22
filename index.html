@@ -24,29 +24,65 @@
             <!-- Logo -->
             <a class="navbar-brand" href="index.html">AyaBook</a>
 
-            <!-- Mobile Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <!-- Right Icons + Toggle for Mobile (We group them so they are always visible) -->
+            <div class="d-flex align-items-center order-lg-last gap-2 gap-lg-1">
+                <!-- Right Icons -->
+                <div class="d-flex align-items-center gap-1 right-icons-group">
+                    <!-- Yêu thích -->
+                    <a href="html/yeuthich.html" class="header-icon-btn">
+                        <i class="ti-heart"></i>
+                        <span class="d-none d-lg-inline">Yêu thích</span>
+                    </a>
+                    <!-- Giỏ hàng -->
+                    <a href="html/donhang.html" class="header-icon-btn">
+                        <i class="ti-shopping-cart"></i>
+                        <span class="d-none d-lg-inline">Giỏ hàng</span>
+                    </a>
+                    <!-- Đăng nhập -->
+                    <a id="loginBtn" href="html/dangNhap.html" class="header-icon-btn">
+                        <i class="ti-shift-right"></i>
+                        <span class="d-none d-lg-inline">Đăng nhập</span>
+                    </a>
+                    <!-- User Avatar (ẩn khi chưa đăng nhập) -->
+                    <div class="user-avatar-wrapper" style="display:none;" id="userAvatarBtn">
+                        <button class="header-icon-btn" type="button">
+                            <i class="ti-user"></i>
+                            <span class="d-none d-lg-inline">Tài khoản</span>
+                        </button>
+                        <div class="user-dropdown-menu" id="userDropdownMenu">
+                            <div id="userDropdownName">Tài khoản</div>
+                            <a href="#" class="d-flex align-items-center gap-2" id="logoutBtn">
+                                <i class="ti-shift-left"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler ms-1 ms-sm-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarMain" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"
+                        style="background-image: none; display: flex; align-items: center; justify-content: center;"><i
+                            class="ti-menu"></i></span>
+                </button>
+            </div>
 
             <!-- Nav Content -->
             <div class="collapse navbar-collapse" id="navbarMain">
-
                 <!-- Nav Links -->
-                <ul class="navbar-nav me-auto ms-3 gap-1">
+                <ul class="navbar-nav me-auto ms-lg-3 gap-1">
                     <li class="nav-item">
                         <a class="nav-link active" href="index.html">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="html/faq.html">FAQ</a>
+                        <a class="nav-link" href="html/faq.html">FAQ & Hỏi đáp</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="html/vechungtoi.html">Về chúng tôi</a>
                     </li>
                     <!-- Dropdown: Chủ đề -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button">
                             Chủ đề
                         </a>
                         <ul class="dropdown-menu">
@@ -61,45 +97,12 @@
                 </ul>
 
                 <!-- Search Bar -->
-                <div class="navbar-search me-3">
-                    <input id="book-search-input" type="text" placeholder="Tìm kiếm sách, tác giả...">
+                <div class="navbar-search me-lg-3 my-2 my-lg-0">
+                    <input id="book-search-input" type="text" placeholder="Tìm kiếm sách...">
                     <button id="book-search-button" type="button" aria-label="Tìm kiếm">
                         <i class="ti-search"></i>
                     </button>
                 </div>
-
-                <!-- Right Icons -->
-                <div class="d-flex align-items-center gap-1">
-                    <!-- Yêu thích -->
-                    <a href="html/yeuthich.html" class="header-icon-btn">
-                        <i class="ti-heart"></i>
-                        <span>Yêu thích</span>
-                    </a>
-                    <!-- Giỏ hàng -->
-                    <a href="html/donhang.html" class="header-icon-btn">
-                        <i class="ti-shopping-cart"></i>
-                        <span>Giỏ hàng</span>
-                    </a>
-                    <!-- Đăng nhập -->
-                    <a id="loginBtn" href="html/dangNhap.html" class="header-icon-btn">
-                        <i class="ti-shift-right"></i>
-                        <span>Đăng nhập</span>
-                    </a>
-                    <!-- User Avatar (ẩn khi chưa đăng nhập) -->
-                    <div class="user-avatar-wrapper" style="display:none;" id="userAvatarBtn">
-                        <button class="header-icon-btn" type="button">
-                            <i class="ti-user"></i>
-                            <span>Tài khoản</span>
-                        </button>
-                        <div class="user-dropdown-menu" id="userDropdownMenu">
-                            <div id="userDropdownName">Tài khoản</div>
-                            <a href="#" class="d-flex align-items-center gap-2" id="logoutBtn">
-                                <i class="ti-shift-left"></i> Đăng xuất
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </nav>

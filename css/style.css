@@ -95,10 +95,17 @@ body {
     }
 
     @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-6px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    
+
     /* Tạo cầu nối vô hình để chuột không bị trượt khi di chuyển xuống */
     .navbar-nav .dropdown .dropdown-menu::before {
         content: '';
@@ -786,19 +793,19 @@ footer.aya-footer {
 @media (max-width: 991.98px) {
     .navbar {
         height: auto;
-        min-height: 68px;
-        padding: 0 8px;
-        background: #F3F4F6 !important;
+        min-height: 60px;
+        padding: 8px 16px;
+        background: #fff !important;
     }
 
     .navbar-brand {
-        font-size: 39px !important;
+        font-size: 24px !important;
     }
 
     .navbar-toggler {
-        border: 2px solid #6B7280 !important;
-        border-radius: 12px !important;
-        padding: 6px 10px !important;
+        border: 1px solid var(--aya-border) !important;
+        border-radius: 6px !important;
+        padding: 4px 8px !important;
         box-shadow: none !important;
     }
 
@@ -807,48 +814,25 @@ footer.aya-footer {
     }
 
     .navbar .navbar-collapse {
-        background: #F3F4F6;
+        background: #fff;
         border: none;
         border-radius: 0;
         box-shadow: none;
-        margin-top: 8px;
-        padding: 0 0 10px;
-        position: relative;
-        display: block !important;
-        flex-basis: auto;
-        flex-grow: 0;
-    }
-
-    /* Luôn hiện cụm icon ở header khi chưa mở menu */
-    .navbar .navbar-collapse.collapse:not(.show):not(.collapsing) {
-        height: auto !important;
-        overflow: visible;
-    }
-
-    .navbar .navbar-collapse.collapse:not(.show):not(.collapsing) .navbar-nav,
-    .navbar .navbar-collapse.collapse:not(.show):not(.collapsing) .navbar-search {
-        display: none;
-    }
-
-    .navbar .navbar-collapse.show::before,
-    .navbar .navbar-collapse.collapsing::before {
-        content: '';
-        display: block;
-        height: 9px;
-        background: #f05d8f;
-        margin: 0 20px 14px;
+        margin-top: 10px;
+        padding: 0;
     }
 
     .navbar-nav {
         gap: 0 !important;
         margin: 0 !important;
-        padding: 0 20px;
+        padding: 0;
     }
 
     .navbar-nav .nav-link {
-        font-size: 31px;
-        padding: 9px 0 !important;
+        font-size: 15px;
+        padding: 12px 0 !important;
         border-radius: 0;
+        border-bottom: 1px solid #f1f5f9;
     }
 
     .navbar .dropdown-toggle {
@@ -864,67 +848,53 @@ footer.aya-footer {
         border: none;
         box-shadow: none;
         background: transparent;
-        padding: 2px 0 6px;
+        padding: 0 0 10px 16px;
         margin-top: 0;
     }
 
     .navbar .dropdown-item {
-        padding: 8px 0 8px 12px;
-        font-size: 28px;
+        padding: 10px 0;
+        font-size: 14px;
     }
 
-    .navbar .navbar-collapse .d-flex.align-items-center.gap-1 {
-        position: absolute;
-        right: 58px;
-        top: -56px;
-        gap: 14px !important;
+    .right-icons-group {
+        gap: 12px !important;
     }
 
-    .navbar .navbar-collapse .header-icon-btn {
+    .right-icons-group .header-icon-btn {
         width: auto;
         padding: 0;
     }
 
-    .navbar .navbar-collapse .header-icon-btn i {
-        font-size: 30px;
+    .right-icons-group .header-icon-btn i {
+        font-size: 22px;
     }
 
-    .navbar .navbar-collapse .header-icon-btn span {
-        display: none;
-    }
-
-    .navbar .navbar-collapse .navbar-search {
-        width: calc(100% - 32px);
+    .navbar .navbar-search {
+        width: 100%;
         max-width: none;
-        margin: 10px 16px 0;
-        height: 44px;
+        margin: 16px 0 10px;
+        height: 40px;
         background: #fff;
-        border-radius: 10px;
+        border-radius: 6px;
     }
 
-    .navbar .navbar-collapse.collapse.show .navbar-search,
-    .navbar .navbar-collapse.collapsing .navbar-search {
-        display: flex;
-    }
-
-    .navbar .navbar-collapse #book-search-input {
-        font-size: 12px;
+    .navbar #book-search-input {
+        font-size: 14px;
     }
 }
 
 @media (max-width: 430px) {
     .navbar-brand {
-        font-size: 37px !important;
+        font-size: 22px !important;
     }
 
-    .navbar .navbar-collapse .d-flex.align-items-center.gap-1 {
-        right: 56px;
-        top: -54px;
-        gap: 12px !important;
+    .right-icons-group {
+        gap: 10px !important;
     }
 
-    .navbar .navbar-collapse .header-icon-btn i {
-        font-size: 28px;
+    .right-icons-group .header-icon-btn i {
+        font-size: 20px;
     }
 }
 

@@ -3,11 +3,11 @@
 // ============================================================
 
 // helper để lưu giỏ hàng và yêu thích theo từng user
-window.getAuthEmail = function() {
+window.getAuthEmail = function () {
     return (localStorage.getItem('loggedIn') === 'true') ? localStorage.getItem('email') : 'guest';
 };
-window.getCartKey = function() { return 'ayaCart_' + window.getAuthEmail(); };
-window.getFavKey  = function() { return 'ayaFavorites_' + window.getAuthEmail(); };
+window.getCartKey = function () { return 'ayaCart_' + window.getAuthEmail(); };
+window.getFavKey = function () { return 'ayaFavorites_' + window.getAuthEmail(); };
 
 $(document).ready(function () {
 
@@ -101,6 +101,17 @@ $(document).ready(function () {
             $('nav.navbar').addClass('navbar-scrolled');
         } else {
             $('nav.navbar').removeClass('navbar-scrolled');
+        }
+    });
+
+    // ─── Custom Dropdown Toggle for Mobile (No Popper.js) ─────
+    $(document).on('click', '.navbar-nav .dropdown-toggle', function (e) {
+        e.preventDefault();
+        if ($(window).width() < 992) {
+            e.stopPropagation();
+            var $parent = $(this).parent();
+            $parent.toggleClass('show');
+            $parent.find('.dropdown-menu').slideToggle(200);
         }
     });
 
