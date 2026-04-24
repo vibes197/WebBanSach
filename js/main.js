@@ -1,17 +1,10 @@
-// ============================================================
-//  AyaBook – main.js  (khởi tạo chung, dùng jQuery)
-// ============================================================
-
-// helper để lưu giỏ hàng và yêu thích theo từng user
-window.getAuthEmail = function () {
+﻿window.getAuthEmail = function () {
     return (localStorage.getItem('loggedIn') === 'true') ? localStorage.getItem('email') : 'guest';
 };
 window.getCartKey = function () { return 'ayaCart_' + window.getAuthEmail(); };
 window.getFavKey = function () { return 'ayaFavorites_' + window.getAuthEmail(); };
 
 $(document).ready(function () {
-
-    // ─── Toast Notifications ──────────────────────────────────
     window.ayaShowToast = function (message, type) {
         type = type || 'success';
         var iconMap = {
@@ -43,10 +36,7 @@ $(document).ready(function () {
             setTimeout(function () { $toast.remove(); }, 400);
         }, 3000);
     };
-    // Alias cũ cho compatibility
     window.showToast = window.ayaShowToast;
-
-    // ─── Auth UI Update ───────────────────────────────────────
     function updateNavAuthUI() {
         var isLoggedIn = localStorage.getItem('loggedIn') === 'true';
         var name = localStorage.getItem('name') || '';
@@ -60,8 +50,6 @@ $(document).ready(function () {
         }
     }
     updateNavAuthUI();
-
-    // ─── User Avatar Dropdown ────────────────────────────────
     $(document).on('click', '#userAvatarBtn', function (e) {
         e.stopPropagation();
         $('#userDropdownMenu').toggleClass('show');
@@ -69,18 +57,13 @@ $(document).ready(function () {
     $(document).on('click', function () {
         $('#userDropdownMenu').removeClass('show');
     });
-
-    // ─── Logout ──────────────────────────────────────────────
     $(document).on('click', '#logoutBtn', function (e) {
         e.preventDefault();
         localStorage.removeItem('loggedIn');
         window.location.reload();
     });
-
-    // ─── Search redirect ──────────────────────────────────────
     function doSearch(q) {
         if (q && q.trim()) {
-            // Detect nếu ta đang ở root hay html/ folder
             var isRoot = !window.location.pathname.includes('/html/');
             var prefix = isRoot ? 'html/' : '';
             window.location.href = prefix + 'timkiem.html?q=' + encodeURIComponent(q.trim());
@@ -94,8 +77,6 @@ $(document).ready(function () {
     $('#book-search-input').on('keydown', function (e) {
         if (e.key === 'Enter') doSearch($(this).val());
     });
-
-    // ─── Navbar Scroll Effect ─────────────────────────────────
     $(window).on('scroll', function () {
         if ($(this).scrollTop() > 10) {
             $('nav.navbar').addClass('navbar-scrolled');
@@ -103,8 +84,6 @@ $(document).ready(function () {
             $('nav.navbar').removeClass('navbar-scrolled');
         }
     });
-
-    // ─── Custom Dropdown Toggle for Mobile (No Popper.js) ─────
     $(document).on('click', '.navbar-nav .dropdown-toggle', function (e) {
         e.preventDefault();
         if ($(window).width() < 992) {
@@ -116,8 +95,6 @@ $(document).ready(function () {
     });
 
 });
-
-// ─── requireLogin (global) ───────────────────────────────────
 function requireLogin() {
     if (localStorage.getItem('loggedIn') !== 'true') {
         window.ayaShowToast && window.ayaShowToast('Bạn cần đăng nhập để thực hiện chức năng này!', 'warning');
@@ -130,3 +107,4 @@ function requireLogin() {
     }
     return true;
 }
+

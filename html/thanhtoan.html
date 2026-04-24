@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -25,10 +25,8 @@
         </div>
 
         <div class="row g-4">
-            <!-- Form -->
             <div class="col-12 col-lg-7">
 
-                <!-- Thông tin giao hàng -->
                 <div class="form-section">
                     <h3><i class="ti-location-pin me-2"></i>Thông tin giao hàng</h3>
                     <div class="row g-3">
@@ -66,7 +64,6 @@
                     </div>
                 </div>
 
-                <!-- Phương thức thanh toán -->
                 <div class="form-section">
                     <h3><i class="ti-credit-card me-2"></i>Phương thức thanh toán</h3>
                     <div class="payment-method selected" onclick="selectPayment(this)">
@@ -87,7 +84,6 @@
                 </div>
             </div>
 
-            <!-- Tóm tắt đơn hàng -->
             <div class="col-12 col-lg-5">
                 <div class="order-mini">
                     <h3 style="font-size:15px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">Đơn hàng
@@ -111,7 +107,6 @@
         </div>
     </div>
 
-    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
     <footer class="aya-footer">
         <div class="container-fluid px-4 px-lg-5">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
@@ -134,7 +129,6 @@
         </div>
     </footer>
 
-    <!-- Toast Container -->
     <div id="aya-toast-container"></div>
 
     <script src="../js/jquery-4.0.0.min.js"></script>
@@ -148,8 +142,6 @@
 
         var cartItems = JSON.parse(localStorage.getItem(window.getCartKey()) || '[]');
         var subtotal = cartItems.reduce(function (s, i) { return s + parsePrice(i.price) * (i.qty || 1); }, 0);
-
-        // Fix đường dẫn ảnh: img/xxx.png → ../img/xxx.png
         function fixImgPath(src) {
             if (!src) return '';
             if (src.startsWith('img/')) return '../' + src;
@@ -184,3 +176,4 @@
 </body>
 
 </html>
+

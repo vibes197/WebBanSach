@@ -1,13 +1,7 @@
-// ============================================================
-//  AyaBook – Auth (Đăng nhập / Đăng ký / Đăng xuất)
-//  Dùng jQuery
-// ============================================================
-
+﻿
 $(document).ready(function () {
     updateAuthUI();
 });
-
-// --- Cập nhật giao diện header theo trạng thái đăng nhập ---
 function updateAuthUI() {
     var isLoggedIn = localStorage.getItem('loggedIn') === 'true';
     var name = localStorage.getItem('name') || '';
@@ -21,8 +15,6 @@ function updateAuthUI() {
         $('#userAvatarBtn').hide();
     }
 }
-
-// --- Đăng nhập ---
 function ayaLogin() {
     var email = $('#email').val().trim();
     var pass = $('#password').val();
@@ -60,14 +52,11 @@ function ayaLogin() {
     } else {
         $errorMsg.text('Sai tài khoản hoặc mật khẩu!');
         $errorBox.fadeIn();
-        // Shake animation
         var $card = $('.auth-card');
         $card.addClass('shake');
         setTimeout(function () { $card.removeClass('shake'); }, 600);
     }
 }
-
-// --- Đăng ký ---
 function ayaRegister() {
     var name = $('#regName').val().trim();
     var email = $('#regEmail').val().trim();
@@ -121,14 +110,10 @@ function ayaRegister() {
         window.location.href = './dangNhap.html';
     }, 900);
 }
-
-// --- Đăng xuất ---
 function ayaLogout() {
     localStorage.removeItem('loggedIn');
     window.location.reload();
 }
-
-// --- Yêu cầu đăng nhập ---
 function requireLogin() {
     if (localStorage.getItem('loggedIn') !== 'true') {
         ayaShowToast('Bạn cần đăng nhập để thực hiện chức năng này!', 'warning');
@@ -139,8 +124,6 @@ function requireLogin() {
     }
     return true;
 }
-
-// --- Toggle hiện/ẩn mật khẩu ---
 function togglePasswordVisibility(inputId, btn) {
     var $input = $('#' + inputId);
     var $icon = $(btn).find('i');
@@ -152,3 +135,4 @@ function togglePasswordVisibility(inputId, btn) {
         $icon.removeClass('bi-eye-slash').addClass('bi-eye');
     }
 }
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -16,35 +16,29 @@
     <main class="auth-page">
         <div class="auth-card">
 
-            <!-- Header -->
             <div class="auth-header">
                 <a href="../index.html" class="auth-logo">AyaBook</a>
                 <h1>Chào mừng trở lại!</h1>
                 <p>Đăng nhập để khám phá thế giới sách của bạn</p>
             </div>
 
-            <!-- Body -->
             <div class="auth-body">
 
-                <!-- Error -->
                 <div class="auth-alert auth-alert-error" id="loginError" role="alert">
                     <i class="ti-alert"></i>
                     <span id="loginErrorMsg">Sai tài khoản hoặc mật khẩu!</span>
                 </div>
-                <!-- Success -->
                 <div class="auth-alert auth-alert-success" id="loginSuccess" role="status">
                     <i class="ti-check"></i>
                     <span>Đăng nhập thành công! Đang chuyển hướng…</span>
                 </div>
 
-                <!-- Email -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Địa chỉ email</label>
                     <input type="email" class="form-control" id="email" placeholder="example@email.com"
                         autocomplete="email" required>
                 </div>
 
-                <!-- Password -->
                 <div class="mb-2">
                     <label for="password" class="form-label">Mật khẩu</label>
                     <div class="input-group">
@@ -64,7 +58,6 @@
                 </button>
             </div>
 
-            <!-- Footer -->
             <div class="auth-footer">
                 <p>Chưa có tài khoản? <a href="dangKi.html" class="auth-link">Đăng ký ngay</a></p>
                 <a href="../index.html" class="back-home">
@@ -74,7 +67,6 @@
         </div>
     </main>
 
-    <!-- jQuery -->
     <script src="../js/jquery-4.0.0.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 
@@ -129,8 +121,6 @@
         $(document).on('keydown', function (e) {
             if (e.key === 'Enter') doLogin();
         });
-
-        // Điền sẵn thông tin nếu mới đăng ký và chưa đăng nhập
         $(document).ready(function() {
             if (localStorage.getItem('loggedIn') !== 'true') {
                 var savedEmail = localStorage.getItem('email');
@@ -143,3 +133,4 @@
 </body>
 
 </html>
+

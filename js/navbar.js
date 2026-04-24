@@ -1,11 +1,5 @@
-// ============================================================
-//  AyaBook – navbar.js  (inject Navbar + Footer cho trang html/)
-//  Dùng jQuery
-// ============================================================
-
+﻿
 $(document).ready(function () {
-
-    // ─── Inject Navbar ────────────────────────────────────────
     var navbarHtml = `
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid px-4">
@@ -89,9 +83,6 @@ $(document).ready(function () {
     <div id="aya-toast-container"></div>`;
 
     $('body').prepend(navbarHtml);
-    // Footer được nhúng trực tiếp trong từng file HTML, không inject ở đây
-
-    // ─── Auth UI ──────────────────────────────────────────────
     function updateNavAuthUI() {
         var isLoggedIn = localStorage.getItem('loggedIn') === 'true';
         var name = localStorage.getItem('name') || '';
@@ -105,8 +96,6 @@ $(document).ready(function () {
         }
     }
     updateNavAuthUI();
-
-    // ─── User dropdown ────────────────────────────────────────
     $(document).on('click', '#userAvatarBtn', function (e) {
         e.stopPropagation();
         $('#userDropdownMenu').toggleClass('show');
@@ -114,15 +103,11 @@ $(document).ready(function () {
     $(document).on('click', function () {
         $('#userDropdownMenu').removeClass('show');
     });
-
-    // ─── Logout ──────────────────────────────────────────────
     $(document).on('click', '#logoutBtn', function (e) {
         e.preventDefault();
         localStorage.removeItem('loggedIn');
         window.location.reload();
     });
-
-    // ─── Search redirect (from html/ folder) ─────────────────
     function doSearch(q) {
         if (q && q.trim()) {
             window.location.href = 'timkiem.html?q=' + encodeURIComponent(q.trim());
@@ -136,8 +121,6 @@ $(document).ready(function () {
     $(document).on('keydown', '#book-search-input', function (e) {
         if (e.key === 'Enter') doSearch($(this).val());
     });
-
-    // ─── Navbar Scroll ────────────────────────────────────────
     $(window).on('scroll', function () {
         if ($(this).scrollTop() > 10) {
             $('nav.navbar').addClass('navbar-scrolled');
@@ -145,8 +128,6 @@ $(document).ready(function () {
             $('nav.navbar').removeClass('navbar-scrolled');
         }
     });
-
-    // ─── Toast ───────────────────────────────────────────────
     window.ayaShowToast = function (message, type) {
         type = type || 'success';
         var iconMap = { success: 'ti-check', cart: 'ti-shopping-cart', warning: 'ti-alert', danger: 'ti-close' };
@@ -160,8 +141,6 @@ $(document).ready(function () {
         setTimeout(function () { $toast.removeClass('show'); setTimeout(function () { $toast.remove(); }, 400); }, 3000);
     };
     window.showToast = window.ayaShowToast;
-
-    // ─── Custom Dropdown Toggle for Mobile (No Popper.js) ─────
     $(document).on('click', '.navbar-nav .dropdown-toggle', function (e) {
         e.preventDefault();
         if ($(window).width() < 992) {
@@ -173,8 +152,6 @@ $(document).ready(function () {
     });
 
 });
-
-// ─── Cart/Fav keys (global fallback) ─────────────────────────
 if (typeof window.getAuthEmail !== 'function') {
     window.getAuthEmail = function () {
         return (localStorage.getItem('loggedIn') === 'true') ? localStorage.getItem('email') : 'guest';
@@ -186,8 +163,6 @@ if (typeof window.getCartKey !== 'function') {
 if (typeof window.getFavKey !== 'function') {
     window.getFavKey = function () { return 'ayaFavorites_' + window.getAuthEmail(); };
 }
-
-// ─── requireLogin (global) ───────────────────────────────────
 function requireLogin() {
     if (localStorage.getItem('loggedIn') !== 'true') {
         window.ayaShowToast && window.ayaShowToast('Bạn cần đăng nhập để thực hiện chức năng này!', 'warning');
@@ -196,3 +171,4 @@ function requireLogin() {
     }
     return true;
 }
+

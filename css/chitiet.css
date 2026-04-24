@@ -1,8 +1,6 @@
-/* ============================================================
-   AyaBook – chitiet.css (Chi tiết sách)
-   ============================================================ */
+﻿
 
-/* Chi tiết card */
+
 .chitiet-outer {
     display: flex;
     gap: 28px;
@@ -196,7 +194,7 @@
     background: var(--aya-primary-light);
 }
 
-/* Desc */
+
 .chitiet-desc {
     padding: 20px 28px;
     border-top: 1px solid #F3F4F6;
@@ -208,7 +206,7 @@
     margin-bottom: 10px;
 }
 
-/* Reviews */
+
 .chitiet-reviews {
     padding: 20px 28px;
     border-top: 1px solid #F3F4F6;
@@ -269,7 +267,7 @@
     color: var(--aya-gray);
 }
 
-/* Sidebar */
+
 .chitiet-sidebar {
     width: 260px;
     flex-shrink: 0;
@@ -321,7 +319,7 @@
     line-height: 1.5;
 }
 
-/* Related books */
+
 .related-books .book-cover {
     height: 140px;
 }

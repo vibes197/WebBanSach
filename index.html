@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -8,42 +8,32 @@
         content="AyaBook – Mua sách online dễ dàng và chuyên nghiệp. Hàng ngàn đầu sách Manga, Tiểu thuyết, Sách kỹ năng.">
     <title>AyaBook – Trang Chủ</title>
 
-    <!-- Bootstrap 5 CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/fonts/themify-icons/themify-icons.css" rel="stylesheet">
-    <!-- AyaBook CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- ═══════════════════════ NAVBAR ═══════════════════════════ -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid px-4">
 
-            <!-- Logo -->
             <a class="navbar-brand" href="index.html">AyaBook</a>
 
-            <!-- Right Icons + Toggle for Mobile (We group them so they are always visible) -->
             <div class="d-flex align-items-center order-lg-last gap-2 gap-lg-1">
-                <!-- Right Icons -->
                 <div class="d-flex align-items-center gap-1 right-icons-group">
-                    <!-- Yêu thích -->
                     <a href="html/yeuthich.html" class="header-icon-btn">
                         <i class="ti-heart"></i>
                         <span class="d-none d-lg-inline">Yêu thích</span>
                     </a>
-                    <!-- Giỏ hàng -->
                     <a href="html/donhang.html" class="header-icon-btn">
                         <i class="ti-shopping-cart"></i>
                         <span class="d-none d-lg-inline">Giỏ hàng</span>
                     </a>
-                    <!-- Đăng nhập -->
                     <a id="loginBtn" href="html/dangNhap.html" class="header-icon-btn">
                         <i class="ti-shift-right"></i>
                         <span class="d-none d-lg-inline">Đăng nhập</span>
                     </a>
-                    <!-- User Avatar (ẩn khi chưa đăng nhập) -->
                     <div class="user-avatar-wrapper" style="display:none;" id="userAvatarBtn">
                         <button class="header-icon-btn" type="button">
                             <i class="ti-user"></i>
@@ -58,7 +48,6 @@
                     </div>
                 </div>
 
-                <!-- Mobile Toggle -->
                 <button class="navbar-toggler ms-1 ms-sm-2" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarMain" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"
@@ -67,9 +56,7 @@
                 </button>
             </div>
 
-            <!-- Nav Content -->
             <div class="collapse navbar-collapse" id="navbarMain">
-                <!-- Nav Links -->
                 <ul class="navbar-nav me-auto ms-lg-3 gap-1">
                     <li class="nav-item">
                         <a class="nav-link active" href="index.html">Trang chủ</a>
@@ -80,7 +67,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="html/vechungtoi.html">Về chúng tôi</a>
                     </li>
-                    <!-- Dropdown: Chủ đề -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button">
                             Chủ đề
@@ -96,7 +82,6 @@
                     </li>
                 </ul>
 
-                <!-- Search Bar -->
                 <div class="navbar-search me-lg-3 my-2 my-lg-0">
                     <input id="book-search-input" type="text" placeholder="Tìm kiếm sách...">
                     <button id="book-search-button" type="button" aria-label="Tìm kiếm">
@@ -107,13 +92,10 @@
         </div>
     </nav>
 
-    <!-- ═══════════════════════ HERO SLIDER ══════════════════════ -->
     <div class="hero-slider"></div>
 
-    <!-- ═══════════════════════ CONTENT ══════════════════════════ -->
     <div class="container-fluid px-4 px-lg-5 mt-5">
 
-        <!-- SÁCH MỚI -->
         <section class="mb-5">
             <h2 class="section-title">SÁCH MỚI</h2>
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
@@ -156,7 +138,6 @@
             </div>
         </section>
 
-        <!-- BÁN CHẠY NHẤT -->
         <section class="mb-5">
             <h2 class="section-title">BÁN CHẠY NHẤT</h2>
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
@@ -199,7 +180,6 @@
             </div>
         </section>
 
-        <!-- MANGA COLLECTION -->
         <section class="mb-5">
             <div class="section-banner manga-banner mb-4">
                 <h2>Manga Collection</h2>
@@ -245,7 +225,6 @@
             </div>
         </section>
 
-        <!-- SÁCH KỸ NĂNG -->
         <section class="mb-5">
             <div class="section-banner skills-banner mb-4">
                 <h2>Sách Kỹ Năng</h2>
@@ -292,9 +271,7 @@
         </section>
 
     </div>
-    <!-- /container -->
 
-    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
     <footer class="aya-footer">
         <div class="container-fluid px-4 px-lg-5">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
@@ -320,14 +297,10 @@
         </div>
     </footer>
 
-    <!-- Toast Container -->
     <div id="aya-toast-container"></div>
 
-    <!-- jQuery -->
     <script src="js/jquery-4.0.0.min.js"></script>
-    <!-- Bootstrap 5 JS -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- AyaBook JS -->
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
 

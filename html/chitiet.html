@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -15,7 +15,6 @@
 
     <div class="container-fluid px-4 px-lg-5" style="padding-top: 80px;">
 
-        <!-- Breadcrumb -->
         <div class="breadcrumb-wrap">
             <a href="../index.html" class="breadcrumb-btn">
                 <i class="ti-home"></i>
@@ -26,19 +25,15 @@
             </a>
         </div>
 
-        <!-- Main layout -->
         <div class="chitiet-outer">
 
-            <!-- Card trái -->
             <div class="chitiet-card">
                 <div class="chitiet-main">
 
-                    <!-- Ảnh bìa -->
                     <div class="chitiet-cover">
                         <img id="detail-img" src="" alt="Bìa sách">
                     </div>
 
-                    <!-- Thông tin -->
                     <div class="chitiet-info">
                         <div class="cat-badge" id="detail-category-badge">Sách</div>
                         <h1 class="chitiet-title" id="detail-title">Đang tải...</h1>
@@ -78,13 +73,11 @@
                     </div>
                 </div>
 
-                <!-- Tóm tắt -->
                 <div class="chitiet-desc">
                     <h2>Tóm tắt</h2>
                     <p id="detail-desc" style="font-size:14px; color:var(--aya-gray); line-height:1.7;">Đang tải...</p>
                 </div>
 
-                <!-- Đánh giá -->
                 <div class="chitiet-reviews">
                     <div class="review-header">
                         <h2>Đánh giá <span class="badge bg-secondary ms-2 fw-normal" id="review-count">3</span></h2>
@@ -93,7 +86,6 @@
                 </div>
             </div>
 
-            <!-- Sidebar phải -->
             <div class="chitiet-sidebar">
                 <div class="sidebar-block">
                     <div class="sidebar-block-header">Thông tin xuất bản</div>
@@ -120,14 +112,12 @@
             </div>
         </div>
 
-        <!-- Sách cùng thể loại -->
         <section class="mt-5 mb-5 related-books">
             <h2 class="section-title">Sách cùng thể loại</h2>
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4" id="related-grid"></div>
         </section>
     </div>
 
-    <!-- ═══════════════════════ FOOTER ═══════════════════════════ -->
     <footer class="aya-footer">
         <div class="container-fluid px-4 px-lg-5">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
@@ -150,17 +140,14 @@
         </div>
     </footer>
 
-    <!-- Toast Container -->
     <div id="aya-toast-container"></div>
 
-    <!-- Scripts -->
     <script src="../js/jquery-4.0.0.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/data.js"></script>
     <script src="../js/navbar.js"></script>
 
     <script>
-        // Fix img paths for pages in html/ folder
         booksData.forEach(function (b) { b.img = b.img.replace('../img/', '../img/'); });
 
         var sampleReviews = [
@@ -190,51 +177,33 @@
             $('#detail-img').attr({ src: book.img, alt: book.title });
             $('#detail-category-badge').text(book.categoryLabel);
             $('#detail-title').text(book.title);
-
-            // Tags
             var tags = [book.categoryLabel, book.author, 'Bìa mềm'];
             $('#detail-tags').html(tags.map(function (t) { return '<span class="chitiet-tag">' + t + '</span>'; }).join(''));
-
-            // Meta
             var meta = [
                 { label: 'Tác giả:', val: book.author },
                 { label: 'Nhà XB:', val: book.publisher },
                 { label: 'Năm:', val: book.publishDate }
             ];
             $('#detail-meta-row').html(meta.map(function (m) { return '<div class="meta-line"><strong>' + m.label + '</strong>' + m.val + '</div>'; }).join(''));
-
-            // Price
             $('#detail-price').text(book.price);
             if (book.originalPrice) {
                 $('#detail-original').text(book.originalPrice);
                 $('#detail-badge').text(book.discount).show();
             }
-
-            // Stats
             $('#stat-pages').text(book.pages);
             $('#stat-sold').text(book.sold.toLocaleString('vi-VN'));
             $('#stat-rating').text(renderStars(book.rating) + ' ' + book.rating);
-
-            // Desc
             $('#detail-desc').text(book.desc);
-
-            // Sidebar
             $('#sidebar-publisher').text(book.publisher);
             $('#sidebar-author').text(book.author);
             $('#sidebar-year').text(book.publishDate);
-
-            // Fav state
             var favs = JSON.parse(localStorage.getItem(window.getFavKey()) || '[]');
             var isFav = favs.some(function (f) { return f.id === id; });
             if (isFav) { $('#btn-fav').addClass('active-fav').html('<i class="ti-heart"></i> Đã yêu thích'); }
-
-            // Related
             var related = (book.cungTheLoai || []).map(function (rid) { return getBookById(rid); }).filter(function (b) { return b.id !== id; }).slice(0, 4);
             $('#related-grid').html(related.map(function (b) {
                 return '<div class="col"><div class="book-item"><a class="book-link" href="chitiet.html?id=' + b.id + '"><img src="' + b.img + '" alt="' + b.title + '" class="book-cover"></a><p class="book-name">' + b.title + '</p><p class="book-price">' + b.price + '</p></div></div>';
             }).join(''));
-
-            // Reviews
             var allRevs = [...loadSavedComments(id), ...sampleReviews];
             $('#review-count').text(allRevs.length);
             $('#review-list').html(allRevs.map(function (rv) {
@@ -287,3 +256,4 @@
 </body>
 
 </html>
+

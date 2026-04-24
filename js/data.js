@@ -1,8 +1,4 @@
-// ============================================================
-//  AyaBook – Dữ liệu sách (toàn cục)
-// ============================================================
-var booksData = [
-    // --- SÁCH MỚI ---
+﻿var booksData = [
     {
         id: 'nina', name: 'Nina ở thị trấn cao nguyên - Tập 2',
         title: 'Nina ở thị trấn cao nguyên - Tập 2',
@@ -47,7 +43,6 @@ var booksData = [
         desc: 'Cuốn sách dẫn người đọc vào thế giới kỳ diệu của những trang sách, nơi nhân vật và độc giả trở thành những người bạn đồng hành.',
         cungTheLoai: ['tet', 'thiendinh', 'tute', 'damnghi']
     },
-    // --- BÁN CHẠY ---
     {
         id: 'shin', name: 'Shin - Cậu bé bút chì - Tập 1',
         title: 'Shin - Cậu bé bút chì - Tập 1',
@@ -92,7 +87,6 @@ var booksData = [
         desc: 'Jujutsu Kaisen – Chú thuật hồi chiến là bộ manga hành động huyền bí hấp dẫn. Itadori Yuji nuốt ngón tay của Vua Lời Nguyền.',
         cungTheLoai: ['naruto', 'onepi', 'shin', 'worldtrigger']
     },
-    // --- MANGA COLLECTION ---
     {
         id: 'xebuyt', name: 'XE BUÝT ĐƯA EM ĐI',
         title: 'XE BUÝT ĐƯA EM ĐI',
@@ -137,7 +131,6 @@ var booksData = [
         desc: 'Đội quân Doraemon là bộ truyện tranh kinh điển về chú mèo máy Doraemon và những người bạn trong vô số cuộc phiêu lưu.',
         cungTheLoai: ['shin', 'rantaro', 'drstone', 'xebuyt']
     },
-    // --- KỸ NĂNG ---
     {
         id: 'thiendinh', name: 'THIỀN ĐỊNH MỖI NGÀY',
         title: 'THIỀN ĐỊNH MỖI NGÀY',
@@ -183,18 +176,12 @@ var booksData = [
         cungTheLoai: ['thiendinh', 'tute', 'sohoc', 'bantusach']
     }
 ];
-
-// Helper: Lấy sách theo ID
 function getBookById(id) {
     return booksData.find(function(b) { return b.id === id; }) || booksData[0];
 }
-
-// Helper: Lấy sách theo category
 function getBooksByCategory(cat) {
     return booksData.filter(function(b) { return b.category === cat; });
 }
-
-// Helper: Tìm kiếm sách
 function searchBooks(query) {
     var q = query.toLowerCase().trim();
     return booksData.filter(function(b) {
@@ -202,3 +189,4 @@ function searchBooks(query) {
                (b.author && b.author.toLowerCase().includes(q));
     });
 }
+

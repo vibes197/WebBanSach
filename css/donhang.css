@@ -1,6 +1,4 @@
-/* ============================================================
-   AyaBook – donhang.css (Giỏ hàng / Đơn hàng)
-   ============================================================ */
+﻿
 
 .order-item {
     display: flex;
@@ -58,3 +56,4 @@
 }
 .btn-checkout:hover { background: var(--aya-primary-dark); transform: translateY(-1px); }
 .empty-msg { text-align: center; padding: 60px 20px; color: var(--aya-muted); font-size: 16px; }
+

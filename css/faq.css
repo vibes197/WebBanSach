@@ -1,8 +1,6 @@
-/* ============================================================
-   AyaBook – faq.css (FAQ & Hỏi đáp)
-   ============================================================ */
+﻿
 
-/* FAQ Accordion overrides */
+
 .accordion-button:not(.collapsed) {
     color: var(--aya-primary);
     background: var(--aya-primary-light);
@@ -43,3 +41,4 @@
     transition: background 0.2s;
 }
 .btn-submit:hover { background: var(--aya-primary-dark); }
+

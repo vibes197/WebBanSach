@@ -1,6 +1,4 @@
-/* ============================================================
-   AyaBook – vechungtoi.css (Về chúng tôi)
-   ============================================================ */
+﻿
 
 .about-hero {
     background: linear-gradient(135deg, #FF6B6B 0%, #ff8e8e 50%, #ffd0d0 100%);
@@ -27,3 +25,4 @@
 .stat-card .stat-label { font-size: 13px; color: var(--aya-muted); margin-top: 4px; }
 
 .map-container { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
