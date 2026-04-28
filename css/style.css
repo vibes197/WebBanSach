@@ -290,23 +290,23 @@ body {
 
 @keyframes slideShow {
     0% {
-        background-image: url('../img/hanhphuc.png');
+        background-image: url('../img/hanhphuc.webp');
     }
 
     25% {
-        background-image: url('../img/conan.png');
+        background-image: url('../img/conan.webp');
     }
 
     50% {
-        background-image: url('../img/dora.png');
+        background-image: url('../img/dora.webp');
     }
 
     75% {
-        background-image: url('../img/cucdai.png');
+        background-image: url('../img/cucdai.webp');
     }
 
     100% {
-        background-image: url('../img/hanhphuc.png');
+        background-image: url('../img/hanhphuc.webp');
     }
 }
 
@@ -390,11 +390,11 @@ body {
 }
 
 .manga-banner {
-    background: url('../img/manga-header.png') center/cover no-repeat;
+    background: url('../img/manga-header.webp') center/cover no-repeat;
 }
 
 .skills-banner {
-    background: url('../img/skills-header.png') center/cover no-repeat;
+    background: url('../img/skills-header.webp') center/cover no-repeat;
 }
 
 .section-banner h2 {
